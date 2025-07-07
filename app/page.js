@@ -1,103 +1,208 @@
+"use client";
 import Image from "next/image";
+import Navbar from "@/components/Navbar";
+import Sidebar from "@/components/Sidebar";
+import localFont from 'next/font/local'
+import Link from "next/link";
+import { useState } from "react";
+
+
+
+// Local font deathstar
+const deathFont = localFont({
+  src: '../font/DeathStar.otf',
+})
+
+
+
+
+
+
+
+
+
+
+
 
 export default function Home() {
+  // glow on hover
+  const [glow, setGlow] = useState(false)
+  const [glowp, setGlowp] = useState(false)
+  const [glows, setGlows] = useState(false)
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              app/page.js
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <div className="relative w-full h-screen overflow-hidden bg-[url('/image/bghome1.svg')] md:bg-cover bg-center">
+      <Navbar />
+      <Sidebar />
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+      {/* Center Welcome Message */}
+      <div className={`container mx-auto flex justify-center items-center w-full px-4 ${deathFont.className}`}>
+        <div className="pt-2 md:p-1 welcome flex flex-col gap-6 items-center justify-center w-fit text-white text-center">
+          <div className="top flex gap-2 flex-col md:gap-0">
+            <div className="flex justify-center items-center gap-1">
+              <div style={{ boxShadow: '0 0 4px rgba(255,255,255,0.8), 0 0 6px rgba(255,255,255,0.4)' }}
+                className="border-[1px] border-[rgba(255,255,255,0.8)]  w-full h-3" >
+              </div>
+              <div
+                // style={{textShadow: '0 0 4px rgba(255,255,255,0.8), 0 0 6px rgba(255,255,255,0.4)'}} 
+                className="tracking-widest h-fit text-nowrap text-xs w-fit text-[#ceb7ff] font-semibold">A message from earth</div>
+            </div>
+            <div style={{ textShadow: '0 0 4px rgba(255,255,255,0.8), 0 0 6px rgba(255,255,255,0.4)' }}
+              className="tracking-widest text-2xl text-[#2c0457] font-semibold">HELLO FELLOW GALAXY MEMBER</div>
+            <div className="flex justify-center items-center gap-1">
+              <div
+                className="tracking-widest h-fit text-nowrap  text-xs w-fit text-[#ceb7ff] font-semibold "
+              >
+                A message from earth
+              </div>
+              <div style={{ boxShadow: '0 0 4px rgba(255,255,255,0.8), 0 0 6px rgba(255,255,255,0.4)' }}
+                className="border-[1px] border-[rgba(255,255,255,0.8)] w-full h-3" >
+              </div>
+            </div>
+          </div>
+          <div style={{ textShadow: '0 0 4px rgba(255,255,255,1), 0 0 6px rgba(255,255,255,1)' }} className="text-[#2c0457] bottom text-lg tracking-wider hover:ani">I am Anubhab</div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+      </div>
+
+      {/* Bottom Icons */}
+      {/* <div className="hidden md:flex absolute bottom-10 w-full  justify-between px-4 sm:px-10 md:px-20 lg:px-40 z-10">
+        <Link href="/Profile"><Image
+          className="press hover:animate-ping"
+          src="/image/press.svg"
+          alt="Press"
+          width={45}
+          height={45}
+        /></Link>
+        <Image
+          className="scroll hover:animate-bounce"
+          src="/image/scroll.svg"
+          alt="Scroll"
+          width={45}
+          height={45}
+        />
+      </div> */}
+
+      {/* Half Earth Image */}
+      <div className="hidden md:block absolute bottom-0 md:w-4xl md:bottom-0  md:left-1/2  md:transform  md:-translate-x-1/2  md:z-0">
+        <Image
+          className="w-4xl"
+          src="/image/halfearth.svg"
+          alt="Half earth"
+          width={0}
+          height={0}
+          sizes="100vw"
+        />
+      </div>
+      {/* full earth */}
+      <div className="block md:hidden absolute -bottom-52 md:w-4xl md:bottom-0  md:left-1/2  md:transform  md:-translate-x-1/2  md:z-0">
+        <Image
+          className="w-4xl"
+          src="/image/fullearth.svg"
+          alt="Half earth"
+          width={0}
+          height={0}
+          sizes="100vw"
+        />
+      </div>
+
+      {/* Astronaut */}
+      <div className="hidden md:block absolute left-1/2 bottom-40 md:bottom-56 lg:bottom-56 transform -translate-x-1/2 hover:animate-bounce">
+        <Image
+          className="h-10 w-10"
+          src="/image/astronsught.svg"
+          alt="Astronaut"
+          width={0}
+          height={0}
+          sizes="100vw"
+        />
+      </div>
+
+      {/* Click here */}
+      <div className="z-50 group absolute flex flex-col items-center text-white left-1/2 bottom-56 md:bottom-20 transform -translate-x-1/2 w-fit">
+        <div className="group flex items-center space-x-2 cursor-pointer">
+          {/* Left SVG */}
+          <Link href="/Projects"><svg
+            className="transition-transform duration-500 transform translate-x-2 group-hover:-translate-x-1"
+            width="54"
+            height="54"
+            viewBox="0 0 64 57"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path d="M1 1V55.4688H10.7351V10.7073H62.3854V1H1Z" stroke="white" strokeWidth="2" />
+          </svg> </Link >
+
+          {/* Text */}
+          <Link href="/Projects">
+            <p className="text-center text-base font-semibold leading-tight" style={{
+              textShadow: glow
+                ? '0 0 3px rgba(255,255,255,0.8), 0 0 6px rgba(255,255,255,0.4)'
+                : 'none',
+            }}
+              onMouseEnter={() => setGlow(true)}
+              onMouseLeave={() => setGlow(false)}>
+              CLICK HERE
+            </p>
+          </Link >
+
+          {/* Right SVG */}
+          <Link href="/Projects"><svg
+            className="transition-transform duration-500 transform -translate-x-2 group-hover:translate-x-1"
+            width="54"
+            height="54"
+            viewBox="0 0 64 57"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path d="M63 55.5938V1.125H53.2649V45.8864H1.61458V55.5938H63Z" stroke="white" strokeWidth="2" />
+          </svg></Link>
+        </div>
+      </div>
+
+      {/* Meteor */}
+      <div className="absolute left-[25vw] top-[35vh] md:top-[50vh]">
+        <Link href={"/Projects"}>
+          <div className="transform rotate-120">
+            <Image
+              className="meteor hover:animate-ping"
+              src="/image/meteor.svg"
+              alt="meteor"
+              width={45}
+              height={45}
+            />
+          </div>
+          <p style={{
+            textShadow: glowp
+              ? '0 0 3px rgba(255,255,255,0.8), 0 0 6px rgba(255,255,255,0.4)'
+              : 'none',
+          }}
+            onMouseEnter={() => setGlowp(true)}
+            onMouseLeave={() => setGlowp(false)}>Projects</p>
+        </Link>
+      </div>
+
+      {/* Meteor 2*/}
+      <div className="absolute left-3/4 ">
+        <Link href={"/Profile"}>
+          <div className="transform rotate-120">
+            <Image
+              className="meteor hover:animate-ping"
+              src="/image/meteor.svg"
+              alt="meteor"
+              width={45}
+              height={45}
+            />
+          </div>
+          <p style={{
+            textShadow: glows
+              ? '0 0 3px rgba(255,255,255,0.8), 0 0 6px rgba(255,255,255,0.4)'
+              : 'none',
+          }}
+            onMouseEnter={() => setGlows(true)}
+            onMouseLeave={() => setGlows(false)}>Skills</p>
+        </Link>
+      </div>
+
+    </div >
+
   );
 }
